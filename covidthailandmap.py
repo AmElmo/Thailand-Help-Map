@@ -8,7 +8,7 @@ def jprint(obj):
     print(text)
 
 
-endpoint_slug = "?? TO BE DEFINED ??"
+endpoint_slug = "??? TO BE DEFINED ???"
 
 # list_volunteers = requests.get(endpoint_slug).json()
 

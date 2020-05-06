@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="eng">
+<head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164322698-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-164322698-1');
+    </script>
+
+    <meta charset='utf-8'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Covid Thailand Aid</title>
+    <style>
+        #map{
+            height:400px;
+            width:100%
+        }
+        #icon{
+            height:40px;
+            width:100% 
+        }
+        h1{font-family: verdana;}
+        p{font-family: verdana;}
+        h3{font-family: verdana;}
+        h4{font-family: verdana;}
+
+    </style>
+</head>
+
+<body>
+
+    <center><h1>Covid Thailand Aid</h1>
+    <h3>(Real-time overview of all volunteers on the ground)</h3></center>
+    </p>
+
+    <div id="map"></div>
+    <div id="icon"></div>
+
+    <script type='text/javascript' src="json_converter.js"></script>
+
+    <script type='text/javascript'>
+
+    async function initMap(){
+        // Map options
+        var options = {
+            zoom:8,
+            center:{lat:13.7563,lng:100.5018}
+        }
+
+         // Change size of icon
+         var icon = {
+        url: "https://img.icons8.com/cotton/2x/like--v1.png",
+        scaledSize: new google.maps.Size(30, 30)
+        };
+
+        var icon2 = {
+        url: "https://img2.pngio.com/blue-car-icon-png-png-image-blue-car-icon-png-512_512.png",
+        scaledSize: new google.maps.Size(30, 30)
+        };
+
+        // New map
+        var map = new google.maps.Map(document.getElementById('map'),options);
+  
+        // Array of markers
+        markers = await fetchMapData()
+        console.log(markers)
+
+        // Loop through markers
+        for(var i = 0;i < markers.length;i++){
+            addMarker(markers[i]);
+        }
+
+        // Add Marker Function
+        function addMarker(props){
+            var marker = new google.maps.Marker({
+                position:props.coordinates,
+                map:map,
+                icon: (props.car === "YES") ? icon2 : icon,
+                content:props.content
+            })
+
+            console.log(props)
+            console.log(marker)
+
+        
+        var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+        });
+        
+        // Detect click on market
+        marker.addListener('click',function(){
+            infoWindow.open(map,marker);
+        });
+
+        // Close InfowWindow when click outside
+        google.maps.event.addListener(map,'click',function(){
+            infoWindow.close()
+        });
+
+        }
+
+    }
+    </script>
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR3lkg5YkTHl2pUhdwMCkg51-glwcZxbs&callback=initMap"
+async defer></script>
+
+<p id="demo"></p>
+
+<p id="data"></p>
+
+<center><h4>Made with <i class="fa fa-heart"></i> in Paris</h4></center>
+
+</body>
+
+</html>
+

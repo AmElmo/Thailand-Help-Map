@@ -138,4 +138,4 @@ with open("covid_volunteers.json","w") as write_file:
 
 
 # Places API URL
-# "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={i}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyCR3lkg5YkTHl2pUhdwMCkg51-glwcZxbs"
+# "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={i}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=???"

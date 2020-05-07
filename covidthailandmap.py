@@ -113,7 +113,7 @@ with open("covid_volunteers.json","w") as write_file:
 
 # i = "ลาดพร้าว-วังหิน, โชคชัย 4, รัชโยธิน"
 
-# endpoint_slug2 = f"https://maps.googleapis.com/maps/api/geocode/json?address={i}&key=AIzaSyCR3lkg5YkTHl2pUhdwMCkg51-glwcZxbs"
+# endpoint_slug2 = f"https://maps.googleapis.com/maps/api/geocode/json?address={i}&???"
 
 # list_locations = requests.get(endpoint_slug2).json()['results']
 
